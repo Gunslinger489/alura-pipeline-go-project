@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go_version: ['1.18', '1.19']
+        go_version: ['1.18.x', '1.19.x']
         os: [ubuntu-latest, windows-latest]
  
     steps:
@@ -25,7 +25,7 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
-        go-version: ${{ matrix.os }}
+        go-version: ${{ matrix.go_version }}
       
     - name: Build database
       run: docker-compose build
