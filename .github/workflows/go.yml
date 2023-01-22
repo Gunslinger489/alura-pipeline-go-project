@@ -12,9 +12,11 @@ on:
 jobs:
 
   test:
-    runs-on: ubuntu-latest
+    name: Test on node ${{ matrix.go_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.OS }}
     strategy:
       matrix:
+        OS: [ubuntu-latest, windows-latest]
         go_version: ['1.18', '1.19', '>=1.19']
     steps:
     - uses: actions/checkout@v3
